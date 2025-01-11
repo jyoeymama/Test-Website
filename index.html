@@ -1,6 +1,87 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Section</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .comment-section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .comment-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .comments-list {
+            margin-top: 20px;
+        }
+        .comment {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 5px solid #4CAF50;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
 <body>
-    <h1>
-        Test Website
-    </h1>
+
+    <div class="comment-section">
+        <h1>Leave a Comment</h1>
+        
+        <textarea id="commentInput" class="comment-box" placeholder="Write your comment here..."></textarea>
+        <button class="submit-btn" onclick="addComment()">Submit</button>
+        
+        <div class="comments-list" id="commentsList"></div>
+    </div>
+
+    <script>
+        function addComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentsList = document.getElementById('commentsList');
+            const newComment = commentInput.value.trim();
+
+            if (newComment) {
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.textContent = newComment;
+                commentsList.appendChild(commentDiv);
+                commentInput.value = ''; // Clear the input after submitting
+            } else {
+                alert('Please write a comment before submitting.');
+            }
+        }
+    </script>
+
 </body>
+</html>
